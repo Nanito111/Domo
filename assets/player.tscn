@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://xyi71vkg6xs"]
+
+[ext_resource type="Script" path="res://code/scripts/Player/Movement.cs" id="1_sph12"]
+[ext_resource type="Script" path="res://code/scripts/Utils/FollowPhysicsNode.cs" id="2_6pshg"]
+[ext_resource type="Script" path="res://code/scripts/Player/Look.cs" id="2_rdnch"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qukcf"]
+radius = 0.25
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_look")]
+collision_mask = 3
+input_ray_pickable = false
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+floor_constant_speed = true
+floor_max_angle = 0.698132
+floor_snap_length = 0.5
+platform_floor_layers = 4294967294
+script = ExtResource("1_sph12")
+_look = NodePath("Visuals/Look")
+_standWalkSpeed = 2.487
+maxAngularYVelocity = 20.0
+_jumpImpulse = 4.0
+_maxLandingPenaltyTime = 6.0
+_landingPenaltyTimeMultiplier = 0.3
+
+[node name="MovementCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_qukcf")
+
+[node name="Visuals" type="Node3D" parent="." node_paths=PackedStringArray("_targetNode")]
+top_level = true
+script = ExtResource("2_6pshg")
+_targetNode = NodePath("..")
+
+[node name="Look" type="Node" parent="Visuals" node_paths=PackedStringArray("_character", "Camera", "yawPivot", "pitchPivot")]
+script = ExtResource("2_rdnch")
+_character = NodePath("../..")
+Camera = NodePath("../YawLook/PitchLook/Camera3D")
+yawPivot = NodePath("../YawLook")
+pitchPivot = NodePath("../YawLook/PitchLook")
+_lookLimitPositiveX = 50.0
+_lookLimitNegativeX = -60.0
+_cameraStandPosition = Vector3(0, 1.6, 0)
+_cameraCrouchPosition = Vector3(0, 0.8, 0)
+_cameraPronePosition = Vector3(0, 0.3, 0)
+
+[node name="YawLook" type="Node3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="PitchLook" type="Node3D" parent="Visuals/YawLook"]
+
+[node name="Camera3D" type="Camera3D" parent="Visuals/YawLook/PitchLook"]
+transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, -1, 0, 0, 0)
+current = true
+fov = 80.0
