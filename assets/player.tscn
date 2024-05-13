@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://xyi71vkg6xs"]
+[gd_scene load_steps=6 format=3 uid="uid://xyi71vkg6xs"]
 
-[ext_resource type="Script" path="res://code/scripts/Player/Movement.cs" id="1_sph12"]
-[ext_resource type="Script" path="res://code/scripts/Utils/FollowPhysicsNode.cs" id="2_6pshg"]
-[ext_resource type="Script" path="res://code/scripts/Player/Look.cs" id="2_rdnch"]
+[ext_resource type="Script" path="res://code/scripts/Player/movement.gd" id="1_lifja"]
+[ext_resource type="Script" path="res://code/scripts/Utils/follow_physics_node.gd" id="2_dc3fp"]
+[ext_resource type="Script" path="res://code/scripts/Player/look.gd" id="3_jnyde"]
+[ext_resource type="Script" path="res://code/scripts/Player/picker.gd" id="4_wo5se"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qukcf"]
 radius = 0.25
@@ -17,34 +18,27 @@ floor_constant_speed = true
 floor_max_angle = 0.698132
 floor_snap_length = 0.5
 platform_floor_layers = 4294967294
-script = ExtResource("1_sph12")
+script = ExtResource("1_lifja")
 _look = NodePath("Visuals/Look")
-_standWalkSpeed = 2.487
-maxAngularYVelocity = 20.0
-_jumpImpulse = 4.0
-_maxLandingPenaltyTime = 6.0
-_landingPenaltyTimeMultiplier = 0.3
 
 [node name="MovementCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_qukcf")
 
-[node name="Visuals" type="Node3D" parent="." node_paths=PackedStringArray("_targetNode")]
+[node name="Visuals" type="Node3D" parent="." node_paths=PackedStringArray("_target_node")]
 top_level = true
-script = ExtResource("2_6pshg")
-_targetNode = NodePath("..")
+script = ExtResource("2_dc3fp")
+_target_node = NodePath("..")
 
-[node name="Look" type="Node" parent="Visuals" node_paths=PackedStringArray("_character", "Camera", "yawPivot", "pitchPivot")]
-script = ExtResource("2_rdnch")
+[node name="Look" type="Node" parent="Visuals" node_paths=PackedStringArray("_character", "camera", "yaw_pivot", "pitch_pivot")]
+script = ExtResource("3_jnyde")
 _character = NodePath("../..")
-Camera = NodePath("../YawLook/PitchLook/Camera3D")
-yawPivot = NodePath("../YawLook")
-pitchPivot = NodePath("../YawLook/PitchLook")
-_lookLimitPositiveX = 50.0
-_lookLimitNegativeX = -60.0
-_cameraStandPosition = Vector3(0, 1.6, 0)
-_cameraCrouchPosition = Vector3(0, 0.8, 0)
-_cameraPronePosition = Vector3(0, 0.3, 0)
+camera = NodePath("../YawLook/PitchLook/Camera3D")
+yaw_pivot = NodePath("../YawLook")
+pitch_pivot = NodePath("../YawLook/PitchLook")
+_mouse_sensitivity = 0.05
+_look_limit_positive_x = 70.0
+_look_limit_negative_x = -60.0
 
 [node name="YawLook" type="Node3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
@@ -55,3 +49,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, -1, 0, 0, 0)
 current = true
 fov = 80.0
+
+[node name="ItemPickup" type="RayCast3D" parent="Visuals/YawLook/PitchLook"]
+target_position = Vector3(0, 0, 2)
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("4_wo5se")

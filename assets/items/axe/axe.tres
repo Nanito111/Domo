@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b55sufnb453c2"]
+
+[ext_resource type="PackedScene" uid="uid://bf2gffqa03xrr" path="res://assets/models/tool-axe.glb" id="1_3ftgs"]
+[ext_resource type="Script" path="res://code/scripts/Resources/item.gd" id="2_noeg4"]
+
+[resource]
+script = ExtResource("2_noeg4")
+name = "Axe"
+scene = ExtResource("1_3ftgs")
