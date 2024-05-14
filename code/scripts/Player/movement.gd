@@ -66,9 +66,7 @@ func air_movement(
 	_velocity.x = air_velocity.x
 	_velocity.z = air_velocity.z
 
-# TODO: Landing Penalty
 func on_landing_penalty():
-	print("landing penalty!!!")
 	var last_fall_speed:float = _velocity.y
 	var penalty_time:float = clampf(last_fall_speed * _landing_penalty_time_multiplier, 0, _max_landing_penalty_time)
 	

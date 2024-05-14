@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgo2typdraopp"]
 
 [ext_resource type="PackedScene" uid="uid://bf2gffqa03xrr" path="res://assets/models/tool-axe.glb" id="1_3fwfk"]
-[ext_resource type="Script" path="res://code/scripts/Resources/item_object.gd" id="2_nlomc"]
+[ext_resource type="Script" path="res://code/scripts/Items/item_object.gd" id="2_nlomc"]
 [ext_resource type="Resource" uid="uid://b55sufnb453c2" path="res://assets/items/axe/axe.tres" id="3_3fnbg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ngaw"]

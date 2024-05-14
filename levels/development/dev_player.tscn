@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://iv6s2vqvsaca"]
+[gd_scene load_steps=9 format=3 uid="uid://iv6s2vqvsaca"]
 
 [ext_resource type="PackedScene" uid="uid://xyi71vkg6xs" path="res://assets/player.tscn" id="1_8fgih"]
 [ext_resource type="Texture2D" uid="uid://cfb1cuvbsxici" path="res://assets/testing/texture_03.png" id="1_v3qop"]
 [ext_resource type="PackedScene" uid="uid://cgo2typdraopp" path="res://assets/items/axe/axe.tscn" id="3_iy84g"]
+[ext_resource type="Script" path="res://code/scripts/UI/gameplay_ui.gd" id="4_0j01l"]
+[ext_resource type="PackedScene" uid="uid://ck60s0emc1160" path="res://assets/ui/inventory_dialog.tscn" id="4_jdpu5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5lvj"]
 albedo_texture = ExtResource("1_v3qop")
@@ -34,6 +36,23 @@ collision_mask = 5
 shape = SubResource("HeightMapShape3D_mughk")
 
 [node name="Player" parent="." instance=ExtResource("1_8fgih")]
+unique_name_in_owner = true
 
-[node name="Axe" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(0.411078, 0.552879, -0.724803, -0.314444, 0.832289, 0.45653, 0.855651, 0.0402406, 0.515986, 0.213874, 1.61206, 2.39495)
+[node name="Axe2" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(-0.235225, 0.025848, -0.971598, 0.409266, 0.909336, -0.0748923, 0.881572, -0.415258, -0.224477, -2.78613, 1.61206, 3.39495)
+
+[node name="Axe3" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(-0.704694, 0.685612, -0.1826, -0.70275, -0.639024, 0.312714, 0.0977153, 0.34869, 0.932131, -1.69666, 1.61206, 1.34131)
+
+[node name="Axe4" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.411078, 0.552879, -0.724803, -0.314444, 0.832289, 0.45653, 0.855651, 0.0402406, 0.515986, -0.865024, 1.61206, 3.39495)
+
+[node name="Axe5" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 2.4613, 1.61206, 3.39495)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("4_0j01l")
+
+[node name="InventoryDialog" parent="UI" instance=ExtResource("4_jdpu5")]
+unique_name_in_owner = true
+visible = false
