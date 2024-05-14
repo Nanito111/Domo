@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://b55sufnb453c2"]
+
+[ext_resource type="PackedScene" uid="uid://bf2gffqa03xrr" path="res://assets/models/tool-axe.glb" id="1_3ftgs"]
+[ext_resource type="Texture2D" uid="uid://dq8knlxjyntne" path="res://assets/ui/items_icons/tool-axe.png" id="1_qavhi"]
+[ext_resource type="Script" path="res://code/scripts/Items/item.gd" id="3_vxmuj"]
+
+[resource]
+script = ExtResource("3_vxmuj")
+name = "Axe"
+scene = ExtResource("1_3ftgs")
+icon = ExtResource("1_qavhi")
