@@ -4,10 +4,10 @@ extends CanvasLayer
 @onready var player = %Player
 
 @onready var inventory_dialog:InventoryDialog = %InventoryDialog
-var item_picker:ItemPicker
+var item_picker:Hand
 
 func _ready():
-	item_picker = player.get_node("%ItemPicker")
+	item_picker = player.get_node("%Hand")
 
 func _unhandled_input(event):
 	if(event.is_action_pressed("p_inventory")):
