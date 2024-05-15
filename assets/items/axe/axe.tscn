@@ -24,6 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0284396, -0.159262, 0)
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 collision_layer = 8
+monitoring = false
 script = ExtResource("2_nlomc")
 item_resource = ExtResource("3_3fnbg")
 

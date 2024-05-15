@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Loch"
 
+[editor]
+
+movie_writer/movie_file="/home/nanito/Vídeos/Godot Movies/test.avi"
+movie_writer/disable_vsync=true
+
 [input]
 
 p_forward={
