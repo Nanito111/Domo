@@ -13,7 +13,7 @@ signal picker_entered
 signal picker_exited
 
 func pickup_item(item_instance:ItemObject):
-	var item_added: bool = inventory.add_item(item_instance.item_resource, inventory._content.size())
+	var item_added: bool = inventory.add_item(item_instance.item_resource, inventory._content.find(null))
 	if item_added == true:
 		item_instance.pickup()
 		print("item picked! item is ", item_instance.item_resource.name)
