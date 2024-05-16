@@ -1,0 +1,166 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck60s0emc1160"]
+
+[ext_resource type="Theme" uid="uid://dgcy64n8nvt14" path="res://assets/ui/ui_theme.tres" id="1_hdphg"]
+[ext_resource type="Script" path="res://code/scripts/Inventory/inventory_interface.gd" id="1_lkkyn"]
+[ext_resource type="PackedScene" uid="uid://cl1vnf0spmuia" path="res://assets/ui/inventory_slot.tscn" id="2_1nu6h"]
+
+[sub_resource type="SystemFont" id="SystemFont_ursaf"]
+font_names = PackedStringArray("Serif")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4fan"]
+font = SubResource("SystemFont_ursaf")
+font_size = 28
+
+[node name="InventoryInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("1_hdphg")
+script = ExtResource("1_lkkyn")
+slot_scene = ExtResource("2_1nu6h")
+
+[node name="BackpackInventory" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackpackInventory"]
+clip_contents = true
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("1_hdphg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackpackInventory/VBoxContainer"]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="BackpackInventory/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "backpack"
+label_settings = SubResource("LabelSettings_n4fan")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackpackGrid" type="GridContainer" parent="BackpackInventory/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+columns = 5
+
+[node name="InventorySlot_5" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_6" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_7" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_8" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_9" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_10" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_11" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_12" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_13" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_14" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_15" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_16" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_17" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_18" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_19" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_20" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_21" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_22" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_23" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_24" parent="BackpackInventory/VBoxContainer/BackpackGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="HandInventory" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HandGrid" type="HBoxContainer" parent="HandInventory"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -64.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_hdphg")
+alignment = 1
+
+[node name="InventorySlot_0" parent="HandInventory/HandGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_1" parent="HandInventory/HandGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_2" parent="HandInventory/HandGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_3" parent="HandInventory/HandGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[node name="InventorySlot_4" parent="HandInventory/HandGrid" instance=ExtResource("2_1nu6h")]
+layout_mode = 2
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]

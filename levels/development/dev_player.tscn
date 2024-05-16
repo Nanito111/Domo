@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfb1cuvbsxici" path="res://assets/testing/texture_03.png" id="1_v3qop"]
 [ext_resource type="PackedScene" uid="uid://cgo2typdraopp" path="res://assets/items/axe/axe.tscn" id="3_iy84g"]
 [ext_resource type="Script" path="res://code/scripts/UI/gameplay_ui.gd" id="4_0j01l"]
-[ext_resource type="PackedScene" uid="uid://ck60s0emc1160" path="res://assets/ui/inventory_dialog.tscn" id="4_jdpu5"]
+[ext_resource type="PackedScene" uid="uid://ck60s0emc1160" path="res://assets/ui/inventory_interface.tscn" id="4_jdpu5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5lvj"]
 albedo_texture = ExtResource("1_v3qop")
@@ -46,9 +46,47 @@ transform = Transform3D(0.411078, 0.552879, -0.724803, -0.314444, 0.832289, 0.45
 [node name="Axe5" parent="." instance=ExtResource("3_iy84g")]
 transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 2.4613, 1.61206, 3.39495)
 
+[node name="Axe6" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 1.32192, 2.20613, 3.91652)
+
+[node name="Axe7" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, -1.65219, 2.91572, 4.80362)
+
+[node name="Axe8" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, -0.335036, 3.26227, 4.78341)
+
+[node name="Axe9" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 0.860801, 2.48439, 6.62288)
+
+[node name="Axe10" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 0.052681, 3.59756, 6.79551)
+
+[node name="Axe11" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 1.09896, 3.31591, 9.36626)
+
+[node name="Axe12" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 1.85655, 2.64533, 10.1032)
+
+[node name="Axe13" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 0.856549, 2.64533, 8.10322)
+
+[node name="Axe14" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 0.330003, 3.41671, 8.32673)
+
+[node name="Axe15" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, -0.533182, 4.3534, 7.90305)
+
+[node name="Axe16" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, -1.66344, 4.76664, 5.38857)
+
+[node name="Axe17" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, -0.646501, 3.67843, 5.92465)
+
+[node name="Axe18" parent="." instance=ExtResource("3_iy84g")]
+transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, -0.646501, 3.67843, 5.92465)
+
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_0j01l")
 
-[node name="InventoryDialog" parent="UI" instance=ExtResource("4_jdpu5")]
+[node name="InventoryInterface" parent="UI" instance=ExtResource("4_jdpu5")]
 unique_name_in_owner = true
-visible = false

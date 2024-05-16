@@ -1,7 +1,7 @@
 class_name InventorySlot
-extends PanelContainer
+extends Button
 
-@onready var icon_texure = $IconTexure
-
-func display(item:Item):
-	icon_texure.texture = item.icon
+func display_slot(item:Item):
+	icon = item.icon
+func restore_slot():
+	icon = null
