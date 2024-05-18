@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://iv6s2vqvsaca"]
+[gd_scene load_steps=11 format=3 uid="uid://iv6s2vqvsaca"]
 
 [ext_resource type="PackedScene" uid="uid://xyi71vkg6xs" path="res://assets/player.tscn" id="1_8fgih"]
 [ext_resource type="Texture2D" uid="uid://cfb1cuvbsxici" path="res://assets/testing/texture_03.png" id="1_v3qop"]
-[ext_resource type="PackedScene" uid="uid://cgo2typdraopp" path="res://assets/items/axe/axe.tscn" id="3_iy84g"]
 [ext_resource type="Script" path="res://code/scripts/UI/gameplay_ui.gd" id="4_0j01l"]
 [ext_resource type="PackedScene" uid="uid://ck60s0emc1160" path="res://assets/ui/inventory_interface.tscn" id="4_jdpu5"]
-[ext_resource type="PackedScene" uid="uid://bgvruy4k3ae4u" path="res://assets/items/metal_panel_narrow/metal_panel_narrow.tscn" id="4_q3rgq"]
+[ext_resource type="PackedScene" uid="uid://cmpesxvk6cb5g" path="res://assets/items/item_instance.tscn" id="5_1lw24"]
+[ext_resource type="Resource" uid="uid://b55sufnb453c2" path="res://assets/items/axe/axe.tres" id="6_v0s32"]
+[ext_resource type="Resource" uid="uid://im7kftuxgfxb" path="res://assets/items/metal_panel_narrow/metal_panel_narrow.tres" id="7_jujsd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5lvj"]
 albedo_texture = ExtResource("1_v3qop")
@@ -35,50 +36,40 @@ shape = SubResource("ConcavePolygonShape3D_m153n")
 [node name="Player" parent="." instance=ExtResource("1_8fgih")]
 unique_name_in_owner = true
 
-[node name="Axe2" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(-0.235225, 0.025848, -0.971598, 0.409266, 0.909336, -0.0748923, 0.881572, -0.415258, -0.224477, -2.78613, 1.61206, 3.39495)
-
-[node name="Axe3" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(-0.704694, 0.685612, -0.1826, -0.70275, -0.639024, 0.312714, 0.0977153, 0.34869, 0.932131, -1.69666, 1.61206, 1.34131)
-
-[node name="Axe4" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(0.411078, 0.552879, -0.724803, -0.314444, 0.832289, 0.45653, 0.855651, 0.0402406, 0.515986, -0.865024, 1.61206, 3.39495)
-
-[node name="Axe5" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 2.4613, 1.61206, 3.39495)
-
-[node name="Axe6" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 1.32192, 2.20613, 3.91652)
-
-[node name="Axe7" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, -1.65219, 2.91572, 4.80362)
-
-[node name="Axe8" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, -0.335036, 3.26227, 4.78341)
-
-[node name="MetalPanelNarrow" parent="." instance=ExtResource("4_q3rgq")]
-transform = Transform3D(0.667684, 0.634432, 0.389479, -0.340218, 0.725394, -0.598378, -0.662156, 0.26702, 0.700179, 2.03514, 2.9, 6.99182)
-
-[node name="MetalPanelNarrow2" parent="." instance=ExtResource("4_q3rgq")]
-transform = Transform3D(0.725891, -0.687795, -0.00453654, 0.641277, 0.679151, -0.357096, 0.24869, 0.256304, 0.934056, 1.44516, 3.47585, 7.08931)
-
-[node name="MetalPanelNarrow3" parent="." instance=ExtResource("4_q3rgq")]
-transform = Transform3D(0.385241, 0.841011, 0.379855, -0.481928, 0.534387, -0.694389, -0.786978, 0.0844449, 0.611174, 1.17588, 2.72826, 6.04357)
-
-[node name="MetalPanelNarrow4" parent="." instance=ExtResource("4_q3rgq")]
-transform = Transform3D(0.246904, 0.347206, 0.904702, -0.757385, 0.65153, -0.0433447, -0.60449, -0.674505, 0.423834, 0.154086, 4.19736, 6.48689)
-
-[node name="MetalPanelNarrow5" parent="." instance=ExtResource("4_q3rgq")]
-transform = Transform3D(-0.0676635, -0.953581, -0.293436, 0.872843, 0.0858889, -0.480383, 0.483287, -0.288628, 0.826515, -1.1384, 3.61052, 6.92008)
-
-[node name="MetalPanelNarrow6" parent="." instance=ExtResource("4_q3rgq")]
-transform = Transform3D(-0.00274104, -0.266229, -0.963906, 0.473318, 0.848753, -0.23577, 0.880887, -0.456881, 0.123684, -2.25417, 3.61052, 6.92008)
-
-[node name="MetalPanelNarrow7" parent="." instance=ExtResource("4_q3rgq")]
-transform = Transform3D(-0.00274104, -0.266229, -0.963906, 0.473318, 0.848753, -0.23577, 0.880887, -0.456881, 0.123684, -1.36222, 4.01297, 8.7269)
-
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_0j01l")
 
 [node name="InventoryInterface" parent="UI" instance=ExtResource("4_jdpu5")]
 unique_name_in_owner = true
+
+[node name="ItemInstance" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40354, 1.40664, 11.2737)
+item_resource = ExtResource("6_v0s32")
+
+[node name="ItemInstance2" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403543, 1.40664, 11.2737)
+item_resource = ExtResource("6_v0s32")
+
+[node name="ItemInstance3" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.596457, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance4" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance5" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance6" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance7" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance8" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")

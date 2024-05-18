@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxbd33dpuwjsm"]
+
+[ext_resource type="PackedScene" uid="uid://rbhxxml3pvow" path="res://assets/models/metal-panel-narrow.glb" id="1_0ufd1"]
+
+[node name="MetalPanelNarrow" type="Node3D"]
+
+[node name="metal-panel-narrow2" parent="." instance=ExtResource("1_0ufd1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.04678, 0)

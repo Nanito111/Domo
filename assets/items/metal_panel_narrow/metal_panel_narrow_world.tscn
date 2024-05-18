@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgvruy4k3ae4u"]
+
+[ext_resource type="PackedScene" uid="uid://rbhxxml3pvow" path="res://assets/models/metal-panel-narrow.glb" id="1_vl52e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ngaw"]
+size = Vector3(0.25, 0.508545, 0.0510254)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mj0l7"]
+radius = 0.3
+
+[node name="CollisionShape3D" type="CollisionShape3D"]
+shape = SubResource("BoxShape3D_0ngaw")
+
+[node name="metal-panel-narrow2" parent="." instance=ExtResource("1_vl52e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24678, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_mj0l7")

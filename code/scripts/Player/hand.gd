@@ -27,7 +27,7 @@ func pickup_item(item_object:ItemObject):
 		#print("item not picked! backpack is full ")
 
 func picker_handler():
-	if (is_colliding() and get_collider() is ItemObject):
+	if (is_colliding() and get_collider().get_parent().get_parent() is ItemObject):
 		if (picker_item_state == PickerStates.OUT):
 			picker_item_state = PickerStates.ON
 			picker_entered.emit()
@@ -52,7 +52,7 @@ func hand_inventory_input(event:InputEvent):
 
 	hand_slot_changed.emit(current_hand_item, last_hand_item)
 
-func _process(_delta):
+func _physics_process(_delta):
 	picker_handler()
 
 func _unhandled_input(event:InputEvent):
@@ -60,4 +60,4 @@ func _unhandled_input(event:InputEvent):
 		hand_inventory_input(event)
 		
 		if (event.is_action("p_pick_item") and picker_item_state == PickerStates.ON):
-			pickup_item(get_collider() as ItemObject)
+			pickup_item(get_collider().get_parent().get_parent() as ItemObject)

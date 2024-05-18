@@ -1,8 +1,11 @@
 class_name ItemObject
-extends Area3D
+extends RigidBody3D
 
 @export var item_resource:ItemDataModel
-@export var items_stacked: int = 1
+var items_stacked: int = 1
 
 func pickup():
-	get_parent().queue_free()
+	queue_free()
+
+func _enter_tree():
+	add_child(item_resource.world_instance.instantiate())
