@@ -168,6 +168,4 @@ layout_mode = 2
 [node name="InventorySlot_4" parent="HandInventory/HandGrid" instance=ExtResource("2_1nu6h")]
 layout_mode = 2
 
-[connection signal="hidden" from="." to="." method="_on_hidden"]
-
 [editable path="HandInventory/HandGrid/InventorySlot_0"]

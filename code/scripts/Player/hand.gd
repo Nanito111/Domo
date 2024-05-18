@@ -73,8 +73,8 @@ func add_hand_item(item_index:int, _inventory):
 	else:
 		hands_items[item_index].hide()
 
-func remove_hand_item(item_index:int):
-	if item_index > 4:
+func remove_hand_item(item_index:int, stack:int):
+	if item_index > 4 or stack > 0:
 		return
 
 	hands_items[item_index].queue_free()

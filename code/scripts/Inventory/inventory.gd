@@ -6,7 +6,8 @@ var content:Array[Item]
 
 signal item_added(index:int, inventory:Inventory)
 signal item_stacked(index:int, inventory:Inventory)
-signal item_removed(index:int)
+signal item_removed(index:int, stack:int)
+signal item_moved(origin:int, destination:int)
 
 func check_if_has_item(item_resource:ItemDataModel):
 	for item in content:
@@ -55,8 +56,25 @@ func add_item(item:Item, index:int):
 	return true
 
 func remove_item(index:int):
-	content[index] = null
-	item_removed.emit(index)
+	if (content[index] == null):
+		return
+
+	if (content[index].items_stacked > 1):
+		content[index].items_stacked -= 1
+		item_removed.emit(index, content[index].items_stacked)
+	else:
+		content[index] = null
+		item_removed.emit(index, 0)
+
+func move_item(origin:int, destination:int):
+	var origin_item: Item = Item.new(
+		content[origin].item_resource,
+		content[origin].items_stacked
+	)
+	content[origin] = content[destination]
+	content[destination] = origin_item
+
+	item_moved.emit(origin, destination)
 
 func _init():
 	content.resize(MAX_CAPACITY)
