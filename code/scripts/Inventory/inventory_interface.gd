@@ -12,7 +12,10 @@ var slots_nodes:Array[InventorySlot]
 signal slot_removed(index:int)
 
 func add_item_to_slot(index:int, inventory:Inventory):
-	slots_nodes[index].display_slot(inventory._content[index])
+	slots_nodes[index].display_slot(inventory.content[index])
+
+func item_stacked_to_slot(index:int, inventory:Inventory):
+	slots_nodes[index].update_stack_slot(inventory.content[index])
 
 func remove_item_from_slot(index:int):
 	slots_nodes[index].restore_slot()
@@ -31,6 +34,5 @@ func _ready():
 	slots_nodes.append_array(backpack_grid.get_children())
 	
 	for index in range(slots_nodes.size()):
-		print(index)
 		slots_nodes[index].slot_index = index
 		slots_nodes[index].remove_item_input.connect(remove_item_from_slot)

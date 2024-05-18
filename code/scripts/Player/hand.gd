@@ -12,13 +12,17 @@ var picker_item_state: PickerStates = PickerStates.OUT
 signal picker_entered
 signal picker_exited
 
-func pickup_item(item_instance:ItemObject):
-	var item_added: bool = inventory.add_item(item_instance.item_resource, inventory._content.find(null))
+func pickup_item(item_object:ItemObject):
+	var item_added: bool = inventory.add_item(
+		Item.new(item_object.item_resource, item_object.items_stacked),
+		inventory.content.find(null)
+	)
+
 	if item_added == true:
-		item_instance.pickup()
-		print("item picked! item is ", item_instance.item_resource.name)
-	else:
-		print("item not picked! backpack is full ")
+		item_object.pickup()
+		#print("item picked! item is ", item_instance.item_resource.name)
+	#else:
+		#print("item not picked! backpack is full ")
 
 func picker_handler():
 	if (is_colliding() and get_collider() is ItemObject):
