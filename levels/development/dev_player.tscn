@@ -36,12 +36,6 @@ shape = SubResource("ConcavePolygonShape3D_m153n")
 [node name="Player" parent="." instance=ExtResource("1_8fgih")]
 unique_name_in_owner = true
 
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("4_0j01l")
-
-[node name="InventoryInterface" parent="UI" instance=ExtResource("4_jdpu5")]
-unique_name_in_owner = true
-
 [node name="ItemInstance" parent="." instance=ExtResource("5_1lw24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40354, 1.40664, 11.2737)
 item_resource = ExtResource("6_v0s32")
@@ -73,3 +67,9 @@ item_resource = ExtResource("7_jujsd")
 [node name="ItemInstance8" parent="." instance=ExtResource("5_1lw24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59646, 1.40664, 11.2737)
 item_resource = ExtResource("7_jujsd")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("4_0j01l")
+
+[node name="InventoryInterface" parent="UI" instance=ExtResource("4_jdpu5")]
+unique_name_in_owner = true

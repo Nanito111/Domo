@@ -50,10 +50,14 @@ transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0, -1, 0, 0, 0
 current = true
 fov = 80.0
 
-[node name="Hand" type="RayCast3D" parent="Visuals/YawLook/PitchLook"]
+[node name="Hand" type="RayCast3D" parent="Visuals/YawLook/PitchLook" node_paths=PackedStringArray("hand_item_pivot")]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, 2.5)
 collision_mask = 8
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("4_eq0sc")
+hand_item_pivot = NodePath("HandItemPivot")
+
+[node name="HandItemPivot" type="Node3D" parent="Visuals/YawLook/PitchLook/Hand"]
+transform = Transform3D(0.992404, 0.0868241, 0.0871557, -0.0871557, 0.996195, 0, -0.0868241, -0.00759612, 0.996195, -0.25, -0.45, 0.4)
