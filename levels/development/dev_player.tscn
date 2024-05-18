@@ -1,22 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://iv6s2vqvsaca"]
+[gd_scene load_steps=11 format=3 uid="uid://iv6s2vqvsaca"]
 
 [ext_resource type="PackedScene" uid="uid://xyi71vkg6xs" path="res://assets/player.tscn" id="1_8fgih"]
 [ext_resource type="Texture2D" uid="uid://cfb1cuvbsxici" path="res://assets/testing/texture_03.png" id="1_v3qop"]
-[ext_resource type="PackedScene" uid="uid://cgo2typdraopp" path="res://assets/items/axe/axe.tscn" id="3_iy84g"]
 [ext_resource type="Script" path="res://code/scripts/UI/gameplay_ui.gd" id="4_0j01l"]
-[ext_resource type="PackedScene" uid="uid://ck60s0emc1160" path="res://assets/ui/inventory_dialog.tscn" id="4_jdpu5"]
+[ext_resource type="PackedScene" uid="uid://ck60s0emc1160" path="res://assets/ui/inventory_interface.tscn" id="4_jdpu5"]
+[ext_resource type="PackedScene" uid="uid://cmpesxvk6cb5g" path="res://assets/items/item_instance.tscn" id="5_1lw24"]
+[ext_resource type="Resource" uid="uid://b55sufnb453c2" path="res://assets/items/axe/axe.tres" id="6_v0s32"]
+[ext_resource type="Resource" uid="uid://im7kftuxgfxb" path="res://assets/items/metal_panel_narrow/metal_panel_narrow.tres" id="7_jujsd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5lvj"]
 albedo_texture = ExtResource("1_v3qop")
-uv1_scale = Vector3(10, 10, 10)
+uv1_scale = Vector3(50, 50, 50)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gf0qa"]
-size = Vector2(20, 20)
+size = Vector2(50, 50)
 
-[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_mughk"]
-map_width = 21
-map_depth = 21
-map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m153n"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
 [node name="DevPlayer" type="Node"]
 
@@ -29,30 +29,47 @@ material_override = SubResource("StandardMaterial3D_r5lvj")
 mesh = SubResource("PlaneMesh_gf0qa")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
-collision_layer = 2
-collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-shape = SubResource("HeightMapShape3D_mughk")
+shape = SubResource("ConcavePolygonShape3D_m153n")
 
 [node name="Player" parent="." instance=ExtResource("1_8fgih")]
 unique_name_in_owner = true
 
-[node name="Axe2" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(-0.235225, 0.025848, -0.971598, 0.409266, 0.909336, -0.0748923, 0.881572, -0.415258, -0.224477, -2.78613, 1.61206, 3.39495)
+[node name="ItemInstance" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40354, 1.40664, 11.2737)
+item_resource = ExtResource("6_v0s32")
 
-[node name="Axe3" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(-0.704694, 0.685612, -0.1826, -0.70275, -0.639024, 0.312714, 0.0977153, 0.34869, 0.932131, -1.69666, 1.61206, 1.34131)
+[node name="ItemInstance2" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403543, 1.40664, 11.2737)
+item_resource = ExtResource("6_v0s32")
 
-[node name="Axe4" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(0.411078, 0.552879, -0.724803, -0.314444, 0.832289, 0.45653, 0.855651, 0.0402406, 0.515986, -0.865024, 1.61206, 3.39495)
+[node name="ItemInstance3" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.596457, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
 
-[node name="Axe5" parent="." instance=ExtResource("3_iy84g")]
-transform = Transform3D(0.226804, -0.0501613, -0.972648, 0.0673019, 0.997092, -0.0357284, 0.971612, -0.0573576, 0.229521, 2.4613, 1.61206, 3.39495)
+[node name="ItemInstance4" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance5" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance6" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance7" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
+
+[node name="ItemInstance8" parent="." instance=ExtResource("5_1lw24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59646, 1.40664, 11.2737)
+item_resource = ExtResource("7_jujsd")
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_0j01l")
 
-[node name="InventoryDialog" parent="UI" instance=ExtResource("4_jdpu5")]
+[node name="InventoryInterface" parent="UI" instance=ExtResource("4_jdpu5")]
 unique_name_in_owner = true
-visible = false

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDataModel" load_steps=5 format=3 uid="uid://im7kftuxgfxb"]
+
+[ext_resource type="Texture2D" uid="uid://d4dyx28uxuhqb" path="res://assets/ui/items_icons/metal-panel-narrow.png" id="1_7wonb"]
+[ext_resource type="PackedScene" uid="uid://bxbd33dpuwjsm" path="res://assets/items/metal_panel_narrow/metal_panel_narrow_hand.tscn" id="1_b4v8m"]
+[ext_resource type="Script" path="res://code/scripts/Inventory/item_data_model.gd" id="3_bvf6j"]
+[ext_resource type="PackedScene" uid="uid://bgvruy4k3ae4u" path="res://assets/items/metal_panel_narrow/metal_panel_narrow_world.tscn" id="4_x7pcr"]
+
+[resource]
+script = ExtResource("3_bvf6j")
+name = "Metal Panel Narrow"
+hand_instance = ExtResource("1_b4v8m")
+world_instance = ExtResource("4_x7pcr")
+icon = ExtResource("1_7wonb")
+max_stack_capacity = 4
