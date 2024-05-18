@@ -11,6 +11,7 @@ var slots_nodes:Array[InventorySlot]
 
 signal slot_removed(index:int)
 signal slot_moved(origin:int, destination:int)
+signal slot_dropped(index:int)
 
 func add_item_to_slot(index:int, inventory:Inventory):
 	slots_nodes[index].display_slot(inventory.content[index])
@@ -52,7 +53,8 @@ func get_hovered_slot():
 	return -1
 
 func dropping_item(item_to_drop:int):
-	prints("dropping item", item_to_drop)
+	slots_nodes[item_to_drop].restore_slot()
+	slot_dropped.emit(item_to_drop)
 
 func move_item_to_slot(origin:int):
 	var destination:int = get_hovered_slot()

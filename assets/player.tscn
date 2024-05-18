@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://xyi71vkg6xs"]
+[gd_scene load_steps=7 format=3 uid="uid://xyi71vkg6xs"]
 
 [ext_resource type="Script" path="res://code/scripts/Player/movement.gd" id="1_lifja"]
 [ext_resource type="Script" path="res://code/scripts/Utils/follow_physics_node.gd" id="2_dc3fp"]
 [ext_resource type="Script" path="res://code/scripts/Player/look.gd" id="3_jnyde"]
 [ext_resource type="Script" path="res://code/scripts/Player/hand.gd" id="4_eq0sc"]
+[ext_resource type="PackedScene" uid="uid://cmpesxvk6cb5g" path="res://assets/items/item_instance.tscn" id="5_piogc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qukcf"]
 radius = 0.25
@@ -58,6 +59,7 @@ collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("4_eq0sc")
 hand_item_pivot = NodePath("HandItemPivot")
+item_object_scene = ExtResource("5_piogc")
 
 [node name="HandItemPivot" type="Node3D" parent="Visuals/YawLook/PitchLook/Hand"]
 transform = Transform3D(0.992404, 0.0868241, 0.0871557, -0.0871557, 0.996195, 0, -0.0868241, -0.00759612, 0.996195, -0.25, -0.45, 0.4)

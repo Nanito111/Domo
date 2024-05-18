@@ -25,10 +25,10 @@ corner_radius_bottom_left = 5
 anti_aliasing = false
 
 [node name="InventorySlot" type="Panel"]
-clip_contents = true
 custom_minimum_size = Vector2(64, 64)
 offset_right = 64.0
 offset_bottom = 64.0
+mouse_default_cursor_shape = 2
 theme = ExtResource("1_i2bki")
 theme_override_styles/panel = SubResource("StyleBoxFlat_63at4")
 script = ExtResource("1_7x166")
@@ -40,6 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

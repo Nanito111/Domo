@@ -6,6 +6,9 @@ extends Panel
 @onready var focus_indicator = $FocusIndicator
 var slot_index:int
 var mouse_on_slot:bool = false
+var dragging_slot:bool = false
+
+@onready var drag_position_offset:Vector2 = texture_rect.size * -0.5
 
 signal remove_item_input(index:int)
 signal moved_item(origin:int)
@@ -37,13 +40,20 @@ func blur_slot():
 
 func take_item_to_move():
 	focus_slot()
+	dragging_slot = true
 
 func drop_item_in_slot():
 	blur_slot()
+	dragging_slot = false
+	texture_rect.position = Vector2.ZERO
 	moved_item.emit(slot_index)
 
 func _ready():
 	label.hide()
+
+func _process(_delta):
+	if(dragging_slot):
+		texture_rect.global_position = get_global_mouse_position() + drag_position_offset
 
 func _on_gui_input(event:InputEvent):
 	if (event.is_action_pressed("p_mouse_l")):

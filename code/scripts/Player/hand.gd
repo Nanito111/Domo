@@ -5,6 +5,7 @@ var inventory:Inventory = Inventory.new()
 var current_hand_item:int = 0
 var hands_items:Array[Node3D] = []
 @export var hand_item_pivot:Node3D
+@export var item_object_scene:PackedScene
 
 enum PickerStates {
 	ON,
@@ -90,6 +91,25 @@ func update_hand_item(old_item:int, new_item:int):
 		add_hand_item(old_item, null)
 	if inventory.content[new_item] != null:
 		add_hand_item(new_item, null)
+
+func drop_item(index:int):
+	var item_instanced: ItemObject = item_object_scene.instantiate() as ItemObject
+	item_instanced.item_resource = inventory.content[index].item_resource
+	item_instanced.items_stacked = inventory.content[index].items_stacked
+	
+	var direction:Vector3 = Vector3(0, 1, 1)
+	var impulse_direction: Vector3 = (hand_item_pivot.global_basis * direction).normalized()
+	var impulse_torque: Vector3 = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1))
+	
+	get_tree().root.get_child(0).add_child(item_instanced)
+	
+	item_instanced.global_position = hand_item_pivot.global_position
+	item_instanced.apply_central_impulse(impulse_direction * 5)
+	item_instanced.apply_torque_impulse(impulse_torque * 0.05)
+	
+	inventory.content[index] = null
+
+	remove_hand_item(index, 0)
 
 func _ready():
 	hands_items.resize(5)
