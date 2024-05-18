@@ -61,7 +61,7 @@ func hand_inventory_input(event:InputEvent):
 
 	hand_slot_changed.emit(current_hand_item, last_hand_item)
 
-func add_hand_item(item_index:int, _inventory):
+func add_hand_item(item_index:int, __):
 	if item_index > 4:
 		return
 
@@ -77,14 +77,26 @@ func remove_hand_item(item_index:int, stack:int):
 	if item_index > 4 or stack > 0:
 		return
 
-	hands_items[item_index].queue_free()
+	if hands_items[item_index] != null:
+		hands_items[item_index].queue_free()
+
 	hands_items[item_index] = null
+
+func update_hand_item(old_item:int, new_item:int):
+	remove_hand_item(old_item, 0)
+	remove_hand_item(new_item, 0)
+
+	if inventory.content[old_item] != null:
+		add_hand_item(old_item, null)
+	if inventory.content[new_item] != null:
+		add_hand_item(new_item, null)
 
 func _ready():
 	hands_items.resize(5)
 	hands_items.fill(null)
 	inventory.item_added.connect(add_hand_item)
 	inventory.item_removed.connect(remove_hand_item)
+	inventory.item_moved.connect(update_hand_item)
 
 func _physics_process(_delta):
 	picker_handler()

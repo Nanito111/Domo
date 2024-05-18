@@ -67,10 +67,14 @@ func remove_item(index:int):
 		item_removed.emit(index, 0)
 
 func move_item(origin:int, destination:int):
+	if content[origin] == null:
+		return
+
 	var origin_item: Item = Item.new(
 		content[origin].item_resource,
 		content[origin].items_stacked
 	)
+
 	content[origin] = content[destination]
 	content[destination] = origin_item
 
