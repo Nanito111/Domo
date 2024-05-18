@@ -1,7 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl1vnf0spmuia"]
+[gd_scene load_steps=5 format=3 uid="uid://cl1vnf0spmuia"]
 
 [ext_resource type="Script" path="res://code/scripts/Inventory/inventory_slot.gd" id="1_7x166"]
 [ext_resource type="Theme" uid="uid://dgcy64n8nvt14" path="res://assets/ui/ui_theme.tres" id="1_i2bki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63at4"]
+bg_color = Color(0, 0, 0, 0.490196)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijk1t"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.313122, 1, 0.77952, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
 
 [node name="InventorySlot" type="Panel"]
 clip_contents = true
@@ -9,6 +30,7 @@ custom_minimum_size = Vector2(64, 64)
 offset_right = 64.0
 offset_bottom = 64.0
 theme = ExtResource("1_i2bki")
+theme_override_styles/panel = SubResource("StyleBoxFlat_63at4")
 script = ExtResource("1_7x166")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -30,5 +52,16 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "00"
 horizontal_alignment = 1
+
+[node name="FocusIndicator" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i2bki")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ijk1t")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

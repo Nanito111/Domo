@@ -29,6 +29,10 @@ func close_backpack():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	backpack_inventory.hide()
 
+func focus_hand_slot(index:int, old_index:int):
+	slots_nodes[old_index].focus_indicator.hide()
+	slots_nodes[index].focus_indicator.show()
+
 func _ready():
 	slots_nodes.append_array(hand_grid.get_children())
 	slots_nodes.append_array(backpack_grid.get_children())

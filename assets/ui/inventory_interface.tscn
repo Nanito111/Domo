@@ -153,6 +153,9 @@ alignment = 1
 [node name="InventorySlot_0" parent="HandInventory/HandGrid" instance=ExtResource("2_1nu6h")]
 layout_mode = 2
 
+[node name="FocusIndicator" parent="HandInventory/HandGrid/InventorySlot_0" index="2"]
+visible = true
+
 [node name="InventorySlot_1" parent="HandInventory/HandGrid" instance=ExtResource("2_1nu6h")]
 layout_mode = 2
 
@@ -166,3 +169,5 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="hidden" from="." to="." method="_on_hidden"]
+
+[editable path="HandInventory/HandGrid/InventorySlot_0"]

@@ -1,8 +1,7 @@
 class_name GameplayUI
 extends CanvasLayer
 
-@onready var player = %Player
-
+@onready var player:Movement = %Player
 @onready var inventory_interface:InventoryDialog = %InventoryInterface
 var hand:Hand
 
@@ -12,6 +11,7 @@ func _ready():
 	hand.inventory.item_stacked.connect(inventory_interface.item_stacked_to_slot)
 	inventory_interface.slot_removed.connect(hand.inventory.remove_item)
 	inventory_interface.backpack_inventory.hide()
+	hand.hand_slot_changed.connect(inventory_interface.focus_hand_slot)
 
 func _unhandled_input(event):
 	if(event.is_action_pressed("p_inventory")):

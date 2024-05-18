@@ -3,6 +3,7 @@ extends Panel
 
 @onready var texture_rect:TextureRect = $TextureRect
 @onready var label:Label = $Label
+@onready var focus_indicator = $FocusIndicator
 var slot_index:int
 
 signal remove_item_input(index:int)
