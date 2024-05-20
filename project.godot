@@ -24,6 +24,10 @@ project/assembly_name="Loch"
 movie_writer/movie_file="/home/nanito/Vídeos/Godot Movies/test.avi"
 movie_writer/disable_vsync=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
+
 [input]
 
 p_forward={
