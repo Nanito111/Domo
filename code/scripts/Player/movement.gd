@@ -2,6 +2,7 @@ class_name Movement
 extends CharacterBody3D
 @export_group("Nodes")
 @export var _look:Look
+@export var _selfcare:SelfCare
 
 @export_group("Movement Speed")
 @export_subgroup("Stand")
@@ -88,7 +89,12 @@ func _ready():
 	air_landing.connect(on_landing_penalty)
 
 func _physics_process(delta):
-	var speed:float = _speed_values[current_pace_state]
+	var speed:float
+	
+	if (current_movement_state != MovementStates.SWIMING):
+		speed = _speed_values[current_pace_state]
+		speed = lerpf(_stand_walk_speed, speed, _selfcare.stamina)
+
 	_input_dir = Input.get_vector("p_right", "p_left", "p_backward", "p_forward")
 	var direction:Vector3 = (_look.yaw_pivot.basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
 	var inertia_factor = _acceleration_factor if _input_dir != Vector2.ZERO else _stopping_factor

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl1vnf0spmuia"]
 
-[ext_resource type="Script" path="res://code/scripts/Inventory/inventory_slot.gd" id="1_7x166"]
+[ext_resource type="Script" path="res://code/scripts/UI/inventory_slot.gd" id="1_7x166"]
 [ext_resource type="Theme" uid="uid://dgcy64n8nvt14" path="res://assets/ui/ui_theme.tres" id="1_i2bki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63at4"]
