@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dgcy64n8nvt14"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dgcy64n8nvt14"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63at4"]
 bg_color = Color(0, 0, 0, 0.490196)
@@ -20,8 +20,41 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
+[sub_resource type="Gradient" id="Gradient_mgmcg"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l3xcx"]
+gradient = SubResource("Gradient_mgmcg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svod3"]
+texture = SubResource("GradientTexture1D_l3xcx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wklj4"]
+bg_color = Color(0, 0, 0, 0.376471)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knidv"]
+bg_color = Color(0.6, 0.00678027, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffnlg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jqa4"]
+
 [resource]
 default_base_scale = 1.0
 Panel/constants/border_radius = 5
 Panel/styles/base_inventory_slot = SubResource("StyleBoxFlat_63at4")
 Panel/styles/focus_inventory_slot = SubResource("StyleBoxFlat_ijk1t")
+Panel/styles/temperature_bg = SubResource("StyleBoxTexture_svod3")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_wklj4")
+ProgressBar/styles/health_fill = SubResource("StyleBoxFlat_knidv")
+ProgressBar/styles/hunger_fill = SubResource("StyleBoxFlat_ffnlg")
+ProgressBar/styles/stamina_fill = SubResource("StyleBoxFlat_7jqa4")

@@ -1,0 +1,285 @@
+[gd_scene load_steps=14 format=3 uid="uid://bfd4uicay3lof"]
+
+[ext_resource type="Theme" uid="uid://dgcy64n8nvt14" path="res://assets/ui/ui_theme.tres" id="1_4ol5f"]
+[ext_resource type="Script" path="res://code/scripts/UI/selfcare_interface.gd" id="1_q00lj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wklj4"]
+bg_color = Color(0, 0, 0, 0.376471)
+draw_center = false
+skew = Vector2(0.5, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.58, 0.58, 0.58, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knidv"]
+bg_color = Color(0.77, 0.154, 0.236133, 1)
+skew = Vector2(0.5, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.35, 0.098, 0.098, 0.498039)
+shadow_size = 1
+shadow_offset = Vector2(0.5, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffnlg"]
+bg_color = Color(0.86, 0.559, 0, 1)
+skew = Vector2(0.5, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.33, 0.2145, 0.0528, 0.498039)
+shadow_size = 1
+shadow_offset = Vector2(0.5, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jqa4"]
+bg_color = Color(0.0704, 0.448213, 0.88, 1)
+skew = Vector2(0.5, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.09, 0.216, 0.36, 0.498039)
+shadow_size = 1
+shadow_offset = Vector2(0.5, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l35o3"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0.498039)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.290196)
+shadow_size = 1
+shadow_offset = Vector2(-1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlamb"]
+bg_color = Color(0, 0.0666666, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf34p"]
+bg_color = Color(0, 0.71445, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e62aw"]
+bg_color = Color(0.67, 0.67, 0.67, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1mai"]
+bg_color = Color(1, 0.916667, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpd3y"]
+bg_color = Color(1, 0.37844, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jremu"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.219608)
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[node name="SelfcareInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_q00lj")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -186.0
+offset_top = -70.0
+offset_right = -25.9995
+offset_bottom = -55.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_4ol5f")
+theme_override_styles/background = SubResource("StyleBoxFlat_wklj4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_knidv")
+value = 50.0
+rounded = true
+fill_mode = 1
+show_percentage = false
+
+[node name="HungerBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -186.0
+offset_top = -49.0
+offset_right = -25.9995
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_4ol5f")
+theme_override_styles/background = SubResource("StyleBoxFlat_wklj4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ffnlg")
+value = 50.0
+rounded = true
+fill_mode = 1
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -186.0
+offset_top = -28.0
+offset_right = -25.9995
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_4ol5f")
+theme_override_styles/background = SubResource("StyleBoxFlat_wklj4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7jqa4")
+value = 50.0
+rounded = true
+fill_mode = 1
+show_percentage = false
+
+[node name="TemperatureIndicator" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 206.0
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="TemperatureIndicator"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -13.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l35o3")
+
+[node name="Temperatures" type="HBoxContainer" parent="TemperatureIndicator/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Very Cold" type="Panel" parent="TemperatureIndicator/PanelContainer/Temperatures"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hlamb")
+
+[node name="Cold" type="Panel" parent="TemperatureIndicator/PanelContainer/Temperatures"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mf34p")
+
+[node name="Ideal" type="Panel" parent="TemperatureIndicator/PanelContainer/Temperatures"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e62aw")
+
+[node name="Hot" type="Panel" parent="TemperatureIndicator/PanelContainer/Temperatures"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l1mai")
+
+[node name="Very Hot" type="Panel" parent="TemperatureIndicator/PanelContainer/Temperatures"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vpd3y")
+
+[node name="Indicator" type="Panel" parent="TemperatureIndicator"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 100.0
+offset_top = 16.0
+offset_right = 105.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jremu")

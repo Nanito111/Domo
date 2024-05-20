@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://xyi71vkg6xs"]
+[gd_scene load_steps=9 format=3 uid="uid://xyi71vkg6xs"]
 
 [ext_resource type="Script" path="res://code/scripts/Player/movement.gd" id="1_lifja"]
 [ext_resource type="Script" path="res://code/scripts/Utils/follow_physics_node.gd" id="2_dc3fp"]
+[ext_resource type="Script" path="res://code/scripts/Player/self_care.gd" id="2_wjfg7"]
 [ext_resource type="Script" path="res://code/scripts/Player/look.gd" id="3_jnyde"]
+[ext_resource type="Curve" uid="uid://dmmlqnv2jiogk" path="res://assets/curves/body_temperature_curve.tres" id="3_rs2w0"]
 [ext_resource type="Script" path="res://code/scripts/Player/hand.gd" id="4_eq0sc"]
 [ext_resource type="PackedScene" uid="uid://cmpesxvk6cb5g" path="res://assets/items/item_instance.tscn" id="5_piogc"]
 
@@ -10,7 +12,7 @@
 radius = 0.25
 height = 1.8
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_look")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_look", "_selfcare")]
 collision_mask = 3
 input_ray_pickable = false
 axis_lock_angular_x = true
@@ -21,10 +23,17 @@ floor_snap_length = 0.5
 platform_floor_layers = 4294967294
 script = ExtResource("1_lifja")
 _look = NodePath("Visuals/Look")
+_selfcare = NodePath("SelfCare")
 
 [node name="MovementCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_qukcf")
+
+[node name="SelfCare" type="Node" parent="." node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("2_wjfg7")
+player = NodePath("..")
+temperature_curve = ExtResource("3_rs2w0")
 
 [node name="Visuals" type="Node3D" parent="." node_paths=PackedStringArray("_target_node")]
 top_level = true

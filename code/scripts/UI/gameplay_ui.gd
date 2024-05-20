@@ -3,7 +3,10 @@ extends CanvasLayer
 
 @onready var player:Movement = %Player
 @onready var inventory_interface:InventoryDialog = %InventoryInterface
-var hand:Hand
+@onready var selfcare_interface:SelfCareInterface = %SelfcareInterface
+
+@onready var hand:Hand = %Player/%Hand
+@onready var selfcare:SelfCare = %Player/%SelfCare
 
 func _ready():
 	hand = player.get_node("%Hand")
@@ -18,6 +21,12 @@ func _ready():
 
 	inventory_interface.slot_dropped.connect(hand.drop_item)
 	inventory_interface.backpack_inventory.hide()
+
+func _process(_delta):
+	selfcare_interface.health_bar.value = selfcare.health * 100
+	selfcare_interface.hunger_bar.value = selfcare.hunger * 100
+	selfcare_interface.stamina_bar.value = selfcare.stamina * 100
+	selfcare_interface.move_temperature_indicator(selfcare.get_complete_temperature_weight())
 
 func _unhandled_input(event):
 	if(event.is_action_pressed("p_inventory")):

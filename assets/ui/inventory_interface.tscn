@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck60s0emc1160"]
 
 [ext_resource type="Theme" uid="uid://dgcy64n8nvt14" path="res://assets/ui/ui_theme.tres" id="1_hdphg"]
-[ext_resource type="Script" path="res://code/scripts/Inventory/inventory_interface.gd" id="1_lkkyn"]
 [ext_resource type="PackedScene" uid="uid://cl1vnf0spmuia" path="res://assets/ui/inventory_slot.tscn" id="2_1nu6h"]
+[ext_resource type="Script" path="res://code/scripts/UI/inventory_interface.gd" id="2_segn4"]
 
 [sub_resource type="SystemFont" id="SystemFont_ursaf"]
 font_names = PackedStringArray("Serif")
@@ -22,7 +22,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme = ExtResource("1_hdphg")
-script = ExtResource("1_lkkyn")
+script = ExtResource("2_segn4")
 slot_scene = ExtResource("2_1nu6h")
 
 [node name="BackpackInventory" type="PanelContainer" parent="."]
