@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://iv6s2vqvsaca"]
+[gd_scene load_steps=13 format=3 uid="uid://iv6s2vqvsaca"]
 
 [ext_resource type="PackedScene" uid="uid://xyi71vkg6xs" path="res://assets/player.tscn" id="1_8fgih"]
+[ext_resource type="PackedScene" uid="uid://bs1yqmhxpcoa6" path="res://assets/weather/weather.tscn" id="1_gktf2"]
 [ext_resource type="Texture2D" uid="uid://cfb1cuvbsxici" path="res://assets/testing/texture_03.png" id="1_v3qop"]
 [ext_resource type="Script" path="res://code/scripts/UI/gameplay_ui.gd" id="4_0j01l"]
 [ext_resource type="PackedScene" uid="uid://ck60s0emc1160" path="res://assets/ui/inventory_interface.tscn" id="4_jdpu5"]
@@ -14,25 +15,26 @@ albedo_texture = ExtResource("1_v3qop")
 uv1_scale = Vector3(50, 50, 50)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gf0qa"]
-size = Vector2(50, 50)
+size = Vector2(100, 100)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m153n"]
-data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4jqyk"]
+size = Vector3(100, 1, 100)
 
 [node name="DevPlayer" type="Node"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
+[node name="Weather" parent="." instance=ExtResource("1_gktf2")]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_r5lvj")
 mesh = SubResource("PlaneMesh_gf0qa")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+collision_layer = 2
+collision_mask = 13
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_m153n")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_4jqyk")
 
 [node name="Player" parent="." instance=ExtResource("1_8fgih")]
 unique_name_in_owner = true

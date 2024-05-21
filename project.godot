@@ -126,3 +126,14 @@ p_scroll_down={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
+
+[shader_globals]
+
+SkyColor={
+"type": "color",
+"value": Color(0, 0.305882, 1, 1)
+}
+HorizonColor={
+"type": "color",
+"value": Color(0.529412, 0.847059, 1, 1)
+}
