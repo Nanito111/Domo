@@ -131,9 +131,25 @@ p_scroll_down={
 
 SkyColor={
 "type": "color",
-"value": Color(0, 0.305882, 1, 1)
+"value": Color(0, 0.4, 1, 1)
 }
 HorizonColor={
 "type": "color",
-"value": Color(0.529412, 0.847059, 1, 1)
+"value": Color(0.397171, 0.810063, 1, 1)
+}
+StarsSpeed={
+"type": "float",
+"value": 0.01
+}
+SkyExposure={
+"type": "float",
+"value": 0.5
+}
+StarsBrightness={
+"type": "float",
+"value": 0.0
+}
+SunBrightness={
+"type": "float",
+"value": 1.5
 }
