@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkySettings" load_steps=13 format=3 uid="uid://bk1xvmqo5io5k"]
+
+[ext_resource type="Script" path="res://code/scripts/Weather/sky_settings.gd" id="1_aoohg"]
+[ext_resource type="Gradient" uid="uid://lnkn6p20baps" path="res://assets/weather/gradients/day_ambient_color.tres" id="1_ehb5h"]
+[ext_resource type="Gradient" uid="uid://dyhneff8p74cq" path="res://assets/weather/gradients/day_sky_color.tres" id="1_ktmp1"]
+[ext_resource type="Gradient" uid="uid://dbiu0aejfcc0q" path="res://assets/weather/gradients/day_horizon_color.tres" id="2_ckfj7"]
+[ext_resource type="Gradient" uid="uid://dfkjuyie7roe0" path="res://assets/weather/gradients/night_horizon_color.tres" id="3_mfi1v"]
+[ext_resource type="Gradient" uid="uid://d0h37qrpqb2h4" path="res://assets/weather/gradients/moon_light_color.tres" id="3_wqohi"]
+[ext_resource type="Gradient" uid="uid://dc1s3ownul1n" path="res://assets/weather/gradients/night_sky_color.tres" id="3_wv2ju"]
+[ext_resource type="Gradient" uid="uid://bdan0ryl7ny7w" path="res://assets/weather/gradients/night_ambient_color.tres" id="5_7e0fl"]
+[ext_resource type="Curve" uid="uid://d1gvlu3wrv8aw" path="res://assets/weather/curves/moon_light_enegy.tres" id="5_g7vo4"]
+[ext_resource type="Gradient" uid="uid://bxcxj3s5mob21" path="res://assets/weather/gradients/sun_light_color.tres" id="6_6n3wl"]
+[ext_resource type="Curve" uid="uid://lcljnnnatwtf" path="res://assets/weather/curves/stars_brightness.tres" id="9_0rfoh"]
+[ext_resource type="Curve" uid="uid://b5xoadfipbxyv" path="res://assets/weather/curves/sun_light_energy.tres" id="11_7topb"]
+
+[resource]
+script = ExtResource("1_aoohg")
+day_sky_colors = ExtResource("1_ktmp1")
+day_horizon_colors = ExtResource("2_ckfj7")
+night_sky_colors = ExtResource("3_wv2ju")
+night_horizon_colors = ExtResource("3_mfi1v")
+sun_light_energy = ExtResource("11_7topb")
+moon_light_energy = ExtResource("5_g7vo4")
+sun_light_color = ExtResource("6_6n3wl")
+moon_light_color = ExtResource("3_wqohi")
+day_ambient_color = ExtResource("1_ehb5h")
+night_ambient_color = ExtResource("5_7e0fl")
+sun_size = 0.2
+moon_size = 0.12
+sun_brightness = 1.5
+moon_brightness = 7.0
+stars_brightness = ExtResource("9_0rfoh")

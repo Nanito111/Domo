@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=47 format=3 uid="uid://2ld5gl3w15n8"]
+[gd_resource type="VisualShader" load_steps=59 format=3 uid="uid://2ld5gl3w15n8"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_poyen"]
 input_name = "uv"
@@ -34,9 +34,6 @@ operator = 5
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_axbtc"]
 constant = 2.0
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qvbtn"]
-input_name = "light"
-
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_p6jyf"]
 input_name = "normal"
 
@@ -61,11 +58,9 @@ operator = 2
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_thai5"]
 parameter_name = "SunSize"
+qualifier = 1
 default_value_enabled = true
 default_value = 0.3
-
-[sub_resource type="VisualShaderNodeVectorFunc" id="VisualShaderNodeVectorFunc_dby3l"]
-function = 2
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_aprp6"]
 
@@ -128,8 +123,7 @@ default_value = 0.5
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kmvyp"]
 parameter_name = "SunBrightness"
 qualifier = 1
-default_value_enabled = true
-default_value = 3.0
+default_value = 1.0
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_xjyu0"]
 default_input_values = [0, 0.0, 1, 8.0]
@@ -142,10 +136,6 @@ output_port_for_preview = 0
 parameter_name = "StarsBrightness"
 qualifier = 1
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_4k5hu"]
-output_port_for_preview = 0
-input_name = "light_color"
-
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_m1a81"]
 output_port_for_preview = 0
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, 0.5]
@@ -154,8 +144,38 @@ op_type = 4
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_dwgmf"]
 input_name = "exposure"
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u5c31"]
+noise_type = 3
+frequency = 0.2107
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uuc5r"]
+noise = SubResource("FastNoiseLite_u5c31")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ds5ll"]
+texture = SubResource("NoiseTexture2D_uuc5r")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ewb5y"]
+operator = 2
+
 [sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_tfyxs"]
 default_input_values = [0, -0.05, 1, 0.0, 2, 0.5]
+
+[sub_resource type="VisualShaderNodeVec3Parameter" id="VisualShaderNodeVec3Parameter_ifxm4"]
+expanded_output_ports = [0]
+parameter_name = "LightDirection"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_m8837"]
+parameter_name = "LightColor"
+qualifier = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_1hngn"]
+input_name = "model_matrix"
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id="VisualShaderNodeTransformVecMult_kltjv"]
+expanded_output_ports = [0]
+operator = 2
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_8tmpp"]
 parameter_name = "SkyAltitude"
@@ -163,8 +183,32 @@ hint = 1
 default_value_enabled = true
 default_value = 1.0
 
+[sub_resource type="VisualShaderNodeTransformVecMult" id="VisualShaderNodeTransformVecMult_um7ic"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_v1agy"]
+input_name = "view_matrix"
+
+[sub_resource type="VisualShaderNodeVectorFunc" id="VisualShaderNodeVectorFunc_at3fb"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_oj5l8"]
+parameter_name = "LightEnergy"
+qualifier = 1
+default_value = 1.5
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_kkpum"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_1q465"]
+operator = 2
+
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_o0byi"]
 function = 31
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ieg3c"]
+constant = 3.14159
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_20orl"]
 output_port_for_preview = 0
@@ -181,8 +225,12 @@ global uniform float SkyExposure;
 global uniform float StarsSpeed = 0.00999999977648;
 uniform sampler2D tex_lgt_13;
 global uniform float StarsBrightness;
-uniform float SunSize = 0.30000001192093;
-global uniform float SunBrightness = 3;
+uniform sampler2D tex_lgt_51;
+global uniform float SunSize = 0.30000001192093;
+global uniform vec3 LightDirection;
+global uniform float SunBrightness;
+global uniform vec4 LightColor : source_color;
+global uniform float LightEnergy;
 
 
 
@@ -310,8 +358,16 @@ void light() {
 	float n_out46p0 = n_out16p0 * n_out48p0;
 
 
+// Texture2D:51
+	vec4 n_out51p0 = texture(tex_lgt_51, UV);
+
+
+// FloatOp:52
+	float n_out52p0 = n_out46p0 * n_out51p0.x;
+
+
 // VectorOp:39
-	vec3 n_out39p0 = n_out43p0 + vec3(n_out46p0);
+	vec3 n_out39p0 = n_out43p0 + vec3(n_out52p0);
 
 
 // FloatParameter:25
@@ -322,12 +378,28 @@ void light() {
 	float n_out24p0 = n_out25p0 * n_out25p0;
 
 
-// Input:18
-	vec3 n_out18p0 = LIGHT;
+// Input:71
+	mat4 n_out71p0 = VIEW_MATRIX;
 
 
-// VectorFunc:26
-	vec3 n_out26p0 = -(n_out18p0);
+// Input:64
+	mat4 n_out64p0 = MODEL_MATRIX;
+
+
+// Vector3Parameter:60
+	vec3 n_out60p0 = LightDirection;
+
+
+// TransformVectorMult:65
+	vec3 n_out65p0 = (n_out64p0 * vec4(n_out60p0, 0.0)).xyz;
+
+
+// TransformVectorMult:70
+	vec3 n_out70p0 = (n_out71p0 * vec4(n_out65p0, 0.0)).xyz;
+
+
+// VectorFunc:72
+	vec3 n_out72p0 = normalize(n_out70p0);
 
 
 // Input:19
@@ -339,7 +411,7 @@ void light() {
 
 
 // DotProduct:21
-	float n_out21p0 = dot(n_out26p0, n_out20p0);
+	float n_out21p0 = dot(n_out72p0, n_out20p0);
 
 
 // FloatFunc:22
@@ -362,12 +434,28 @@ void light() {
 	float n_out40p0 = n_out34p0 * n_out45p0;
 
 
-// Input:49
-	vec3 n_out49p0 = LIGHT_COLOR;
+// ColorParameter:61
+	vec4 n_out61p0 = LightColor;
+
+
+// FloatParameter:74
+	float n_out74p0 = LightEnergy;
+
+
+// FloatConstant:80
+	float n_out80p0 = 3.141590;
+
+
+// FloatOp:79
+	float n_out79p0 = n_out74p0 * n_out80p0;
+
+
+// VectorOp:78
+	vec4 n_out78p0 = n_out61p0 * vec4(n_out79p0);
 
 
 // VectorOp:38
-	vec3 n_out38p0 = vec3(n_out40p0) * n_out49p0;
+	vec3 n_out38p0 = vec3(n_out40p0) * vec3(n_out78p0.xyz);
 
 
 // VectorOp:36
@@ -380,10 +468,10 @@ void light() {
 
 }
 "
-graph_offset = Vector2(-810.559, 1152.79)
 modes/specular = 2
 flags/shadows_disabled = true
 flags/ambient_light_disabled = true
+nodes/vertex/0/position = Vector2(820, 120)
 nodes/fragment/0/position = Vector2(820, 540)
 nodes/light/0/position = Vector2(2980, 1040)
 nodes/light/2/node = SubResource("VisualShaderNodeInput_m3f7l")
@@ -409,15 +497,13 @@ nodes/light/12/position = Vector2(160, 1160)
 nodes/light/13/node = SubResource("VisualShaderNodeTexture_kclbh")
 nodes/light/13/position = Vector2(840, 1200)
 nodes/light/14/node = SubResource("VisualShaderNodeFloatFunc_i8tmt")
-nodes/light/14/position = Vector2(1180, 1260)
+nodes/light/14/position = Vector2(1160, 1260)
 nodes/light/15/node = SubResource("VisualShaderNodeFloatFunc_w671e")
 nodes/light/15/position = Vector2(1500, 1260)
 nodes/light/16/node = SubResource("VisualShaderNodeFloatOp_dkp6m")
-nodes/light/16/position = Vector2(1840, 1280)
+nodes/light/16/position = Vector2(1780, 1200)
 nodes/light/17/node = SubResource("VisualShaderNodeFloatConstant_axbtc")
 nodes/light/17/position = Vector2(-80, 1240)
-nodes/light/18/node = SubResource("VisualShaderNodeInput_qvbtn")
-nodes/light/18/position = Vector2(-140, 1920)
 nodes/light/19/node = SubResource("VisualShaderNodeInput_p6jyf")
 nodes/light/19/position = Vector2(-40, 2120)
 nodes/light/20/node = SubResource("VisualShaderNodeVectorFunc_gykcr")
@@ -431,9 +517,7 @@ nodes/light/23/position = Vector2(1040, 1760)
 nodes/light/24/node = SubResource("VisualShaderNodeFloatOp_m8tl3")
 nodes/light/24/position = Vector2(820, 1760)
 nodes/light/25/node = SubResource("VisualShaderNodeFloatParameter_thai5")
-nodes/light/25/position = Vector2(500, 1760)
-nodes/light/26/node = SubResource("VisualShaderNodeVectorFunc_dby3l")
-nodes/light/26/position = Vector2(280, 1860)
+nodes/light/25/position = Vector2(400, 1660)
 nodes/light/27/node = SubResource("VisualShaderNodeUVFunc_aprp6")
 nodes/light/27/position = Vector2(520, 1300)
 nodes/light/28/node = SubResource("VisualShaderNodeInput_74bey")
@@ -463,15 +547,39 @@ nodes/light/43/position = Vector2(2260, 860)
 nodes/light/44/node = SubResource("VisualShaderNodeFloatParameter_60aa5")
 nodes/light/44/position = Vector2(1880, 1040)
 nodes/light/45/node = SubResource("VisualShaderNodeFloatParameter_kmvyp")
-nodes/light/45/position = Vector2(1320, 2040)
+nodes/light/45/position = Vector2(1260, 2020)
 nodes/light/46/node = SubResource("VisualShaderNodeFloatOp_xjyu0")
-nodes/light/46/position = Vector2(2200, 1180)
+nodes/light/46/position = Vector2(2120, 1180)
 nodes/light/47/node = SubResource("VisualShaderNodeUVPolarCoord_1y4n4")
 nodes/light/47/position = Vector2(1180, 800)
 nodes/light/48/node = SubResource("VisualShaderNodeFloatParameter_0fcs4")
-nodes/light/48/position = Vector2(1820, 1440)
-nodes/light/49/node = SubResource("VisualShaderNodeInput_4k5hu")
-nodes/light/49/position = Vector2(1700, 1980)
+nodes/light/48/position = Vector2(1700, 1320)
 nodes/light/50/node = SubResource("VisualShaderNodeInput_dwgmf")
 nodes/light/50/position = Vector2(1560, 1080)
-nodes/light/connections = PackedInt32Array(3, 0, 5, 0, 4, 0, 5, 1, 7, 0, 8, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 15, 0, 16, 0, 19, 0, 20, 0, 24, 0, 23, 0, 25, 0, 24, 0, 25, 0, 24, 1, 23, 0, 34, 0, 21, 0, 22, 0, 20, 0, 21, 1, 22, 0, 23, 1, 18, 0, 26, 0, 26, 0, 21, 0, 27, 0, 13, 0, 28, 0, 29, 0, 30, 0, 29, 1, 29, 0, 31, 0, 31, 0, 32, 0, 32, 0, 27, 2, 31, 1, 33, 0, 33, 0, 32, 1, 12, 0, 27, 0, 38, 0, 36, 1, 39, 0, 36, 0, 34, 0, 40, 0, 40, 0, 38, 0, 45, 0, 40, 1, 17, 0, 12, 1, 16, 0, 46, 0, 46, 0, 39, 1, 36, 0, 0, 0, 2, 0, 47, 0, 47, 0, 6, 2, 9, 0, 5, 2, 6, 0, 9, 0, 8, 0, 6, 1, 48, 0, 46, 1, 49, 0, 38, 1, 43, 0, 39, 0, 5, 0, 43, 0, 44, 0, 43, 1)
+nodes/light/51/node = SubResource("VisualShaderNodeTexture_ds5ll")
+nodes/light/51/position = Vector2(2060, 1320)
+nodes/light/52/node = SubResource("VisualShaderNodeFloatOp_ewb5y")
+nodes/light/52/position = Vector2(2320, 1120)
+nodes/light/60/node = SubResource("VisualShaderNodeVec3Parameter_ifxm4")
+nodes/light/60/position = Vector2(-800, 1960)
+nodes/light/61/node = SubResource("VisualShaderNodeColorParameter_m8837")
+nodes/light/61/position = Vector2(1700, 2000)
+nodes/light/64/node = SubResource("VisualShaderNodeInput_1hngn")
+nodes/light/64/position = Vector2(-800, 1820)
+nodes/light/65/node = SubResource("VisualShaderNodeTransformVecMult_kltjv")
+nodes/light/65/position = Vector2(-360, 1900)
+nodes/light/70/node = SubResource("VisualShaderNodeTransformVecMult_um7ic")
+nodes/light/70/position = Vector2(20, 1900)
+nodes/light/71/node = SubResource("VisualShaderNodeInput_v1agy")
+nodes/light/71/position = Vector2(-300, 1780)
+nodes/light/72/node = SubResource("VisualShaderNodeVectorFunc_at3fb")
+nodes/light/72/position = Vector2(300, 1880)
+nodes/light/74/node = SubResource("VisualShaderNodeFloatParameter_oj5l8")
+nodes/light/74/position = Vector2(1680, 2180)
+nodes/light/78/node = SubResource("VisualShaderNodeVectorOp_kkpum")
+nodes/light/78/position = Vector2(2162.37, 1923.92)
+nodes/light/79/node = SubResource("VisualShaderNodeFloatOp_1q465")
+nodes/light/79/position = Vector2(2040, 2140)
+nodes/light/80/node = SubResource("VisualShaderNodeFloatConstant_ieg3c")
+nodes/light/80/position = Vector2(1800, 2400)
+nodes/light/connections = PackedInt32Array(3, 0, 5, 0, 4, 0, 5, 1, 7, 0, 8, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 15, 0, 16, 0, 19, 0, 20, 0, 24, 0, 23, 0, 25, 0, 24, 0, 25, 0, 24, 1, 23, 0, 34, 0, 21, 0, 22, 0, 22, 0, 23, 1, 27, 0, 13, 0, 28, 0, 29, 0, 30, 0, 29, 1, 29, 0, 31, 0, 31, 0, 32, 0, 32, 0, 27, 2, 31, 1, 33, 0, 33, 0, 32, 1, 12, 0, 27, 0, 39, 0, 36, 0, 45, 0, 40, 1, 17, 0, 12, 1, 16, 0, 46, 0, 36, 0, 0, 0, 2, 0, 47, 0, 47, 0, 6, 2, 9, 0, 5, 2, 6, 0, 9, 0, 8, 0, 6, 1, 48, 0, 46, 1, 43, 0, 39, 0, 5, 0, 43, 0, 44, 0, 43, 1, 46, 0, 52, 0, 51, 0, 52, 1, 52, 0, 39, 1, 64, 0, 65, 0, 71, 0, 70, 0, 20, 0, 21, 1, 72, 0, 21, 0, 65, 0, 70, 1, 70, 0, 72, 0, 60, 0, 65, 1, 40, 0, 38, 0, 34, 0, 40, 0, 61, 0, 78, 0, 74, 0, 79, 0, 80, 0, 79, 1, 79, 0, 78, 1, 78, 0, 38, 1, 38, 0, 36, 1)

@@ -23,6 +23,9 @@ size = Vector3(100, 1, 100)
 [node name="DevPlayer" type="Node"]
 
 [node name="Weather" parent="." instance=ExtResource("1_gktf2")]
+max_day_minutes = 1.0
+light_rotation_offset = 3.0
+current_day_state = 1
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_r5lvj")

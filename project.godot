@@ -147,9 +147,25 @@ SkyExposure={
 }
 StarsBrightness={
 "type": "float",
-"value": 0.0
+"value": 6.0
 }
 SunBrightness={
+"type": "float",
+"value": 1.5
+}
+SunSize={
+"type": "float",
+"value": 0.3
+}
+LightColor={
+"type": "color",
+"value": Color(1, 0.9726, 0.932794, 1)
+}
+LightDirection={
+"type": "vec3",
+"value": Vector3(-1, -1, -1)
+}
+LightEnergy={
 "type": "float",
 "value": 1.5
 }
