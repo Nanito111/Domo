@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeatherData" load_steps=2 format=3 uid="uid://ctvpy4aqr4vq1"]
+
+[ext_resource type="Script" path="res://code/scripts/Weather/weather_data.gd" id="1_kab2k"]
+
+[resource]
+script = ExtResource("1_kab2k")
+precipitation = 1
+min_precipitation_energy = 1.0
+max_precipitation_energy = 2.0
+min_wind_energy = 0.0
+max_wind_energy = 0.0
+min_cloud_amount = 0.0
+max_cloud_amount = 0.0
+min_temperature = 12.0
+mid_temperature = 17.0
+max_temperature = 20.0

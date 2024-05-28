@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://iv6s2vqvsaca"]
+[gd_scene load_steps=14 format=3 uid="uid://iv6s2vqvsaca"]
 
 [ext_resource type="PackedScene" uid="uid://xyi71vkg6xs" path="res://assets/player.tscn" id="1_8fgih"]
 [ext_resource type="PackedScene" uid="uid://bs1yqmhxpcoa6" path="res://assets/weather/weather.tscn" id="1_gktf2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://b55sufnb453c2" path="res://assets/items/axe/axe.tres" id="6_v0s32"]
 [ext_resource type="Resource" uid="uid://im7kftuxgfxb" path="res://assets/items/metal_panel_narrow/metal_panel_narrow.tres" id="7_jujsd"]
 [ext_resource type="PackedScene" uid="uid://bfd4uicay3lof" path="res://assets/ui/selfcare_interface.tscn" id="8_3pnsd"]
+[ext_resource type="PackedScene" uid="uid://cyneyk4ggwevx" path="res://assets/weather/particles/rain.tscn" id="10_bm4ud"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5lvj"]
 albedo_texture = ExtResource("1_v3qop")
@@ -23,9 +24,8 @@ size = Vector3(100, 1, 100)
 [node name="DevPlayer" type="Node"]
 
 [node name="Weather" parent="." instance=ExtResource("1_gktf2")]
-max_day_minutes = 1.0
-light_rotation_offset = 3.0
-current_day_state = 1
+process_mode = 1
+max_day_minutes = 0.25
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_r5lvj")
@@ -41,6 +41,7 @@ shape = SubResource("BoxShape3D_4jqyk")
 
 [node name="Player" parent="." instance=ExtResource("1_8fgih")]
 unique_name_in_owner = true
+process_mode = 1
 
 [node name="ItemInstance" parent="." instance=ExtResource("5_1lw24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40354, 1.40664, 11.2737)
@@ -83,3 +84,8 @@ unique_name_in_owner = true
 [node name="SelfcareInterface" parent="GameplayUI" instance=ExtResource("8_3pnsd")]
 unique_name_in_owner = true
 metadata/_edit_use_anchors_ = true
+
+[node name="Rain" parent="." instance=ExtResource("10_bm4ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278502, 15, 3.57792)
+visible = false
+amount = 3000

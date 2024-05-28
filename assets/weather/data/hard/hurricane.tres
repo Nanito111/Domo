@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeatherData" load_steps=2 format=3 uid="uid://b2wyflvcnchg6"]
+
+[ext_resource type="Script" path="res://code/scripts/Weather/weather_data.gd" id="1_xqj3f"]
+
+[resource]
+script = ExtResource("1_xqj3f")
+precipitation = 0
+min_precipitation_energy = 0.0
+max_precipitation_energy = 0.0
+min_wind_energy = 0.0
+max_wind_energy = 0.0
+min_cloud_amount = 0.0
+max_cloud_amount = 0.0
+min_temperature = 20.0
+mid_temperature = 25.0
+max_temperature = 30.0
